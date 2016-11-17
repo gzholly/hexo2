@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>路由器上最简单三步“红杏出墙” | 善世堂 | 四十年来家国，三千里地山河</title>
+
+  
+  <meta name="author" content="梦剧院">
+  
+
+  
+  <meta name="description" content="需要一点点技术操作，真的只是一点点">
+  
+
+  
+  
+  <meta name="keywords" content="科学上网">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="路由器上最简单三步“红杏出墙”"/>
+
+  <meta property="og:site_name" content="善世堂"/>
+
+  
+  <meta property="og:image" content="/hexo/favicon.ico"/>
+  
+
+  <link href="/hexo/favicon.ico" rel="icon">
+  <link rel="alternate" href="/hexo/atom.xml" title="善世堂" type="application/atom+xml">
+  <link rel="stylesheet" href="/hexo/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/hexo/">善世堂</a>
+    </h1>
+    <p class="site-description">四十年来家国，三千里地山河</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/hexo/">主页</a></li>
+      
+        <li><a href="/hexo/archives">归档</a></li>
+      
+        <li><a href="/hexo/about/index.html">关于</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>路由器上最简单三步“红杏出墙”</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/hexo/2016/11/12/路由器上最简单三步“红杏出墙”/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-11-12T12:55:26.000Z">
+          2016-11-12
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="红杏出墙"><a href="#红杏出墙" class="headerlink" title="红杏出墙"></a>红杏出墙</h1><hr>
+<h3 id="这篇文章说些什么？"><a href="#这篇文章说些什么？" class="headerlink" title="这篇文章说些什么？"></a>这篇文章说些什么？</h3><p>路由器上最简单三步“红杏出墙”，是需要一点点技术操作，真的只是一点点。</p>
+<h4 id="我们知道，我们所在的地方，需要科学上网。"><a href="#我们知道，我们所在的地方，需要科学上网。" class="headerlink" title="我们知道，我们所在的地方，需要科学上网。"></a>我们知道，我们所在的地方，需要科学上网。</h4><blockquote>
+<p>为什么需要科学上网?科学上网后又有什么用？这些终极的问题，留给发问的人自己思考吧。<br>我喜欢使用谷歌google做为搜索引擎、使用Facebook与Twitter作为社交与资讯来源。这一切都需要<strong>科学上网</strong>。<br><a id="more"></a></p>
+<p>如：Facebook、Twitter、维基、Dropbox、Google、Instagram、Tumblr、Yahoo 、WordPress 等。</p>
+</blockquote>
+<p>以前，我多数使用别人的HOST，在网上搜索，得到有心人贡献与维护这个Host文件，我们只需要学会使用就可以了。将得到的Host文件，放在Windows的PC主机<br><code>C:\Windows\System32\drivers\etc</code> 即可。</p>
+<p>但如果家里使用的Apple手机与Android手机替换Host又显麻烦，于是又考虑对<strong>路由器</strong>身上打主意。</p>
+<p>路由器则是有要求的，要求可以<strong>支持自定义Host</strong>，最好就是可以刷机，如Openwrt、 PandoraBox、梅林、老毛子等等（可以查阅支持<a href="http://wiki.openwrt.org/toh/start" target="_blank" rel="external">Openwrt</a>的硬件。）</p>
+<blockquote>
+<p>支持Openwrt的硬件很多，我推荐一款，联想的newifi，号称“刷不死”，又便宜又足量。<br><img src="http://upload-images.jianshu.io/upload_images/3644191-2b70e70793c659bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+</blockquote>
+<p><strong>以下举例是基于Openwrt（其它固件类似）</strong></p>
+<ul>
+<li><p>第一步：使用<strong>SSH</strong>连上你的路由器，然后执行一句代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -q https://raw.githubusercontent.com/racaljk/hosts/master/hosts -O /etc/googlehosts --no-check-certificate</div></pre></td></tr></table></figure>
+</li>
+<li><p>第二步：编辑<strong>/etc/dnsmasq.conf</strong><br>在最后添加一句</p>
+<blockquote>
+<p>addn-hosts=/etc/googlehosts</p>
+</blockquote>
+</li>
+<li><p>第三步：执行</p>
+<blockquote>
+<p>/etc/init.d/dnsmasq restart<br>或者 直接<strong>重启</strong></p>
+</blockquote>
+</li>
+</ul>
+<p>之后的事，<strong>你就懂了</strong>。<br>看到最后，是不是觉得好辛苦（我写得更辛苦^_^），但你辛苦是<strong>值得</strong>的。<br>试试<a href="https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5" target="_blank" rel="external">维基百科</a> <a href="https://zh.wikipedia.org/wiki/Wikipedia" target="_blank" rel="external">https://zh.wikipedia.org/wiki/Wikipedia</a> 是不是正常访问呢？(记得修改访问网址为https)<br><img src="http://upload-images.jianshu.io/upload_images/3644191-ff08ad44955b5508.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<h2 id="结束，却仅是开始。"><a href="#结束，却仅是开始。" class="headerlink" title="结束，却仅是开始。"></a>结束，却仅是开始。</h2><p>自有了自定义Host，你可以访问<a href="https://www.google.com.hk" target="_blank" rel="external">google</a>了，但你可能发现<a href="https://www.youtube.com" target="_blank" rel="external">youtube</a>只有列表，打不开内里视频。你可能会越来越不满足，还要考虑能不能<strong>去掉讨厌的视频广告</strong>？能不能有个<strong>干净的DNS</strong>？能不能购买<strong>便宜的shadowsocks</strong>、能不能自建<strong>VPS</strong>（Virtual Private Server）等。不用着急，这些只是一个成长的过程，总有办法解决的。</p>
+<p><strong>最后声明</strong><br>本文提到的，仅代表本人的经验和观点。当然可以联系我作进一步交流，我可以协助您走出第一步。</p>
+<p>转载请注明出处，本文由 <strong>@梦剧院</strong> 发表于简书<br><strong>~END~</strong></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/hexo/categories/技术/">技术</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/hexo/tags/科学上网/">科学上网</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<div id="comment">
+	
+	
+	<!-- 多说评论框 start -->
+	 <div class="ds-thread" data-thread-key="/hexo/2016/11/12/路由器上最简单三步“红杏出墙”/" data-title="路由器上最简单三步“红杏出墙”" data-url="https://gzholly.github.io/hexo2/hexo/2016/11/12/路由器上最简单三步“红杏出墙”/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"aaa"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] 
+	     || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	  </script>
+	<!-- 多说公共JS代码 end -->
+	
+	</div>
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2016 梦剧院
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
